@@ -1,32 +1,74 @@
 import { FaStore } from "react-icons/fa6";
 import { CiLock, CiMail } from "react-icons/ci";
 import "./login.css"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import Swal from 'sweetalert2/src/sweetalert2.js'
 const Login = () => {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
-    const [rememberMe, setRememberMe] = useState(false);
+    const navigate = useNavigate();
 
     const submitData = (e)=>{
         e.preventDefault();
-        axios.post("https://cafe.highdam-sk.com/api/admin/login",{
-            "account_type": "super_admin",
-            email,
-            password
-        }).then(res => {
-            if (rememberMe === true){
-                window.localStorage.setItem("name",res.data.data.name);
-                window.localStorage.setItem("photo_profile",res.data.data.photo_profile);
-                window.localStorage.setItem("mobile",res.data.data.mobile);
-            }else{
-                window.localStorage.removeItem("name");
-                window.localStorage.removeItem("photo_profile");
-                window.localStorage.setItem("mobile");
-            }
-            window.localStorage.setItem("token",res.data.data.token);
-        });
+        if (email === "" || password === ""){
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                  toast.onmouseenter = Swal.stopTimer;
+                  toast.onmouseleave = Swal.resumeTimer;
+                }
+            });
+            Toast.fire({
+                icon: "error",
+                title: "من فضلك قم بادخال جميع البيانات"
+            });
+        }else{
+            axios.post("https://cafe.highdam-sk.com/api/admin/login",{
+                "account_type": "super_admin",
+                email,
+                password
+            }).then(res => {
+                window.localStorage.setItem("userInfos",JSON.stringify(res.data.data));
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: "top-end",
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.onmouseenter = Swal.stopTimer;
+                        toast.onmouseleave = Swal.resumeTimer;
+                        navigate("home")
+                    }
+                });
+                Toast.fire({
+                    icon: "success",
+                    title: res.data.message
+                });
+            }).catch(err=>{
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: "top-end",
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                      toast.onmouseenter = Swal.stopTimer;
+                      toast.onmouseleave = Swal.resumeTimer;
+                    }
+                });
+                Toast.fire({
+                    icon: "error",
+                    title: err.response.data.message
+                });
+            })
+        }
     }
   return (
     <div className="login__container">
@@ -54,6 +96,7 @@ const Login = () => {
                 <div className="form__field">
                     <span><CiLock /></span>
                     <input 
+                        dir="rtl" 
                         type="password" 
                         name="password" 
                         id="password" 
@@ -68,9 +111,6 @@ const Login = () => {
                             type="checkbox" 
                             name="remember" 
                             id="remember"
-                            checked={rememberMe}
-                            onChange={(e)=> setRememberMe(e.target.checked)}
-                            value={rememberMe}
                         />
                         <label htmlFor="remember">تذكرنى</label>
                     </div>

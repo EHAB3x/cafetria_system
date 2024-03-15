@@ -1,6 +1,18 @@
+@import '@sweetalert2/themes/default/default.css';
 :root {
   --primary-color:#1664B8;
   --secondary-color:#626E7D;
-  --text-color:#000024;
+  --primary-text-color:#000024;
+  --secondary-text-color:#5F5F6C;
   --background-color:#F6F8FB;
+}
+.app{
+  display: flex;
+  height: 100%;
+  .left{
+    width: 100%;
+  }
+}
+.app .right{
+  flex-basis: 20%;
 }

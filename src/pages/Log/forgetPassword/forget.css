@@ -1,0 +1,14 @@
+.forget__container{
+    padding: 20px;
+}
+.forget__header{
+    text-align: start;
+}
+.forget__header h1{
+    margin-bottom: 10px;
+}
+.forget__header p{
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--secondary-text-color);
+}
