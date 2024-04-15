@@ -1,0 +1,176 @@
+[
+    {
+      "heading": {
+        "text": "التقارير المالية",
+        "url": "/reports"
+      },
+      "icon": "FaMoneyBillTrendUp",
+      "items": [
+        {
+          "text": "تقارير المبيعات",
+          "url": "/reports/item1"
+        },
+        {
+          "text": "تقارير المشتريات",
+          "url": "/reports/item2"
+        },
+        {
+          "text": "سندات القبض",
+          "url": "/reports/item3"
+        }
+        ,
+        {
+          "text": "سندات الصرف",
+          "url": "/reports/item4"
+        }
+        ,
+        {
+          "text": "الخزائن",
+          "url": "/reports/item5"
+        }
+      ]
+    },
+    {
+      "heading": {
+        "text": "العملاء",
+        "url": "/customers"
+      },
+      "icon": "FaUser",
+      "items": [
+        {
+          "text": "كل العملاء ",
+          "url": "/customers/item4"
+        },
+        {
+          "text": "إضافة عميل جديد",
+          "url": "/customers/item5"
+        }
+      ]
+    },
+    {
+      "heading": {
+        "text": "الموردين",
+        "url": "/suppliers"
+      },
+      "icon": "FaUser",
+      "items": [
+        {
+          "text": "كل الموردين",
+          "url": "/suppliers/item7"
+        },
+        {
+          "text": "إضافة مورد جديد",
+          "url": "/suppliers/item8"
+        }
+      ]
+    }
+    ,
+    {
+      "heading": {
+        "text": "الفواتير",
+        "url": "/invoice"
+      },
+      "icon": "FaReceipt",
+      "items": [
+        {
+          "text": "  كل الفواتير",
+          "url": "/invoice/item7"
+        },
+        {
+          "text": "فواتير الشراء",
+          "url": "/invoice/item8"
+        },
+        {
+          "text": "فواتير البيع",
+          "url": "/invoice/item9"
+        }
+        ,
+        {
+          "text": "فواتير مرتجعات البيع البيع",
+          "url": "/invoice/item9"
+        }
+        ,
+        {
+          "text": "فواتير مرتجعات الشراء",
+          "url": "/invoice/item9"
+        }
+      ]
+    }
+    ,
+    {
+      "heading": {
+        "text": "الحسابات المالية",
+        "url": "/fianace"
+      },
+      "icon": "FaMoneyCheckDollar",
+      "items": [
+        {
+          "text": "المصروفات",
+          "url": "/fianace/item1"
+        },
+        {
+          "text": "الإيرادات",
+          "url": "/fianace/item2"
+        },
+        {
+          "text": "سندات القبض",
+          "url": "/fianace/item3"
+        }
+        ,
+        {
+          "text": "سندات الصرف",
+          "url": "/fianace/item4"
+        }
+        ,
+        {
+          "text": "الخزائن",
+          "url": "/fianace/item5"
+        }
+      ]
+    }
+    ,
+    {
+      "heading": {
+        "text": "المخزون ",
+        "url": "/department3"
+      },
+      "icon": "FaBuromobelexperte",
+      "items": [
+        {
+          "text": "Item 7",
+          "url": "/department3/item7"
+        },
+        {
+          "text": "Item 8",
+          "url": "/department3/item8"
+        },
+        {
+          "text": "Item 9",
+          "url": "/department3/item9"
+        }
+      ]
+    }
+    ,
+    {
+      "heading": {
+        "text": "الطلبات",
+        "url": "/department3"
+      },
+      "icon": "FaClipboardList",
+      "items": [
+        {
+          "text": "Item 7",
+          "url": "/department3/item7"
+        },
+        {
+          "text": "Item 8",
+          "url": "/department3/item8"
+        },
+        {
+          "text": "Item 9",
+          "url": "/department3/item9"
+        }
+      ]
+    }
+  ]
+  

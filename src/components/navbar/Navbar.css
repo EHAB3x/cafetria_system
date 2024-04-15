@@ -78,3 +78,7 @@
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
 }
+.secondNav{
+    display: block;
+    background-color: #e7f3f9;
+}
