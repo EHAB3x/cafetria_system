@@ -32,7 +32,7 @@ const Admins = () => {
     
     
   return (
-    <>
+    <div className="admins">
         <div className="head flex justify-between p-8">
             <h1 className="page__title">مديرين لوحة التحكم</h1>
             <BlueButton text={"اضافة مسئول جديد"} link={"/cities/newCity"}/>
@@ -41,7 +41,7 @@ const Admins = () => {
             <SearchInput placeHolder={"ابحث بالأسم او المنصب"} onInputChange={handleSearchInputChange}/>
         </div>
         <AdminTable headers={["الرقم", "الاسم", "البريد الالكترونى", "رقم الهاتف", "رقم الواتس اب","تاريخ الانشاء", "التحكم"]} data={admins}/>
-    </>
+    </div>
   )
 }
 

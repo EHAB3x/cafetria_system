@@ -7,6 +7,7 @@ import Sidebar from './components/sidebar/Sidebar'
 import Navbar from './components/navbar/Navbar'
 import Palette from './components/palette/Palette'
 import Admins from './pages/Admins/Admins'
+import EditAdmin from './pages/Admins/editAdmin/EditAdmin'
 
 function App() {
   const location = useLocation();
@@ -26,6 +27,7 @@ function App() {
           <Route path='/forget' element={<Forget />}/>
           <Route path='/home' element={<Home />}/>
           <Route path='/admins' element={<Admins />}/>
+          <Route path='/admins/:adminId' element={<EditAdmin />}/>
         </Routes>
       </div>
     </div>

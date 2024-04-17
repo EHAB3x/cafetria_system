@@ -7,11 +7,12 @@ import { RiDeleteBinLine } from "react-icons/ri";
 import { MdChevronRight,MdChevronLeft } from "react-icons/md";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 const AdminTable = ({ headers, data }) => {
   const [boundaries, setBoundaries] = useState({bottom: 0, top: 7});
   const [counts, setCounts] = useState(0);
   const [active, setActive] = useState(0);
-
+  const navigate = useNavigate();
   useEffect(() => {
     let adminsArrayLength = data.length;
     const pageCount = Math.ceil(adminsArrayLength / 7);
@@ -58,7 +59,12 @@ const AdminTable = ({ headers, data }) => {
                 <td>{admin.created_at !== null ? admin.created_at.slice(0, admin.created_at.indexOf("T")) : "غير موجود"}</td>
                 <td className="icons">
                   <span className="view"><IoEyeOutline size="20"/></span>
-                  <span className="edit"><LuPencil size="20"/></span>
+                  <span 
+                    className="edit"
+                    onClick={()=> navigate(`/admins/${admin.id}`)}
+                  >
+                    <LuPencil size="20"/>
+                  </span>
                   <span 
                     className="delete"
                     onClick={()=> deleteAdmin(admin.id)}
