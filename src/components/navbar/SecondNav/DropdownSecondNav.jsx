@@ -20,7 +20,7 @@ export default function Example() {
     {menuData.map((menu, index) => (
         <Menu key={index} as="div" className="relative inline-block text-left w-52">
           <div>
-            <Menu.Button className="inline-flex items-center w-full justify-center gap-x-2  px-3 py-2 text-md font-semibold text-gray-900 ">
+            <Menu.Button className="inline-flex items-center w-full justify-center gap-x-2  px-3 py-2 text-lg font-semibold text-gray-900 ">
             {menu.icon === 'FaMoneyBillTrendUp' && <FaMoneyBillTrendUp />}
             {menu.icon === 'FaMoneyCheckDollar' && <FaMoneyCheckDollar />}
               {menu.icon === 'FaUser' && <FaUser />}
