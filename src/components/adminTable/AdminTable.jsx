@@ -6,10 +6,12 @@ import { LuPencil } from "react-icons/lu";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { MdChevronRight,MdChevronLeft } from "react-icons/md";
 import { useEffect, useState } from "react";
+import axios from "axios";
 const AdminTable = ({ headers, data }) => {
   const [boundaries, setBoundaries] = useState({bottom: 0, top: 7});
   const [counts, setCounts] = useState(0);
   const [active, setActive] = useState(0);
+
   useEffect(() => {
     let adminsArrayLength = data.length;
     const pageCount = Math.ceil(adminsArrayLength / 7);
@@ -21,6 +23,16 @@ const AdminTable = ({ headers, data }) => {
     const top = bottom + 7;
     setBoundaries({ bottom, top });
   };
+
+  const deleteAdmin= async (adminId)=>{
+    const token = JSON.parse(window.localStorage.getItem("userInfos")).token;
+    const response = await axios.get(`https://cafe.highdam-sk.com/api/admin/users/${adminId}?account_type=super_admin`, {
+      headers: {
+        'Authorization': "Bearer " + token,
+      }
+    });
+    console.log(response);
+  }
 
   return(
     <div className="p-8 table">
@@ -47,7 +59,12 @@ const AdminTable = ({ headers, data }) => {
                 <td className="icons">
                   <span className="view"><IoEyeOutline size="20"/></span>
                   <span className="edit"><LuPencil size="20"/></span>
-                  <span className="delete"><RiDeleteBinLine size="20"/></span>
+                  <span 
+                    className="delete"
+                    onClick={()=> deleteAdmin(admin.id)}
+                  >
+                    <RiDeleteBinLine size="20"/>
+                  </span>
                 </td>
               </tr>   
           ))}
@@ -58,7 +75,7 @@ const AdminTable = ({ headers, data }) => {
         <div className="right">
           <p>{`عرض`}</p>
           <p>{`${boundaries.bottom + 1} - `}</p>
-          <p>{`${boundaries.top}`}</p>
+          <p>{`${boundaries.top > data.length ? data.length : boundaries.top}`}</p>
           <p>{`من اجمالى`}</p>
           <p>{`${data.length}`}</p>
         </div>

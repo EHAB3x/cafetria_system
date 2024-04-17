@@ -21,10 +21,8 @@ const Admins = () => {
                         'Authorization': "Bearer " + token,
                     }
                 });
-                // Handle successful response here
                 setAdmins(response.data.data);
             } catch (error) {
-                // Handle error
                 console.error('Error fetching data:', error);
             }
         };

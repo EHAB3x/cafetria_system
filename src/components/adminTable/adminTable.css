@@ -43,6 +43,9 @@
     display: flex;
     justify-content: space-around;
 }
+.table table tbody tr td.icons svg{
+    cursor: pointer;
+}
 .table table tbody tr td.icons .view{
     color: #1664B8;
 }
