@@ -6,6 +6,7 @@ import Home from './pages/home/Home'
 import Sidebar from './components/sidebar/Sidebar'
 import Navbar from './components/navbar/Navbar'
 import Palette from './components/palette/Palette'
+import Admins from './pages/Admins/Admins'
 
 function App() {
   const location = useLocation();
@@ -24,6 +25,7 @@ function App() {
           <Route path='/' element={<Login />}/>
           <Route path='/forget' element={<Forget />}/>
           <Route path='/home' element={<Home />}/>
+          <Route path='/admins' element={<Admins />}/>
         </Routes>
       </div>
     </div>

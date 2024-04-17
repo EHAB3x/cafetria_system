@@ -1,0 +1,131 @@
+.table {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.table table {
+    width: 100%;
+    border: 0.5px solid #BFBFBF;
+}
+
+.table table thead{
+    background-color: #EDF5F9;
+    height: 61px;
+    border: 0.5px solid #BFBFBF;
+}
+.table table tbody tr{
+    padding: 10px 0;
+    border-bottom: 2px solid #EAF0F4;
+    ;
+} 
+.table table tbody tr td{
+    text-align: center;
+    padding: 15px 0;
+}
+.table table tbody tr td.name{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 20px;
+    padding-right: 20px;
+}
+.table table tbody tr td.name img{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+.table table tbody tr td.icons{
+    display: flex;
+    justify-content: space-around;
+}
+.table table tbody tr td.icons .view{
+    color: #1664B8;
+}
+.table table tbody tr td.icons .edit{
+    color: #3D9635;
+}
+.table table tbody tr td.icons .delete{
+    color: #D6534A;
+}
+.table .pagination{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.table .pagination .right{
+    display: flex;
+    gap: 5px;
+    font-size: 20px;
+}
+.table .pagination .left{
+    width: fit-content;
+    display: flex;
+    gap: 10px;
+}
+.table .pagination .left .previous span,
+.table .pagination .left .next span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid var(--primary-color);
+    width: 75px;
+    height: 32px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    transition: .3s linear;
+    -webkit-transition: .3s linear;
+    -moz-transition: .3s linear;
+    -ms-transition: .3s linear;
+    -o-transition: .3s linear;
+    font-weight: 700;
+}
+.table .pagination .left .previous span:hover,
+.table .pagination .left .next span:hover{
+    border: 1px solid var(--primary-color);
+    background-color: var(--primary-color);
+    color: white;
+    cursor: pointer;
+}
+.table .pagination .left .choose{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+.table .pagination .left .choose span{
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    text-align: center;
+    font-weight: 700;
+    line-height: 32px;
+    transition: .3s linear;
+    -webkit-transition: .3s linear;
+    -moz-transition: .3s linear;
+    -ms-transition: .3s linear;
+    -o-transition: .3s linear;
+    font-size: 20px;
+}
+.table .pagination .left .choose span.active{
+    background-color: var(--primary-color);
+    color: white;
+}
+.table .pagination .left .choose span:hover{
+    background-color: var(--primary-color);
+    color: white;
+    cursor: pointer;
+}

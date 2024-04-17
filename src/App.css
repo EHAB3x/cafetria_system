@@ -16,3 +16,7 @@
 .app .right{
   flex-basis: 20%;
 }
+h1.page__title{
+  font-size: 32px;
+  font-weight: bold;
+}
