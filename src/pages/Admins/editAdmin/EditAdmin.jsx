@@ -10,7 +10,7 @@ const EditAdmin = () => {
     const [wMobile, setWMobile] = useState("");
     const [mail, setMail] = useState("");
     const [pass, setPassword] = useState("");
-    const [img, setImg] = useState("");
+    const [img, setImg] = useState(null);
     useEffect(()=>{
         const fetchAdmin = async ()=>{
             const token = JSON.parse(window.localStorage.getItem("userInfos")).token;
@@ -35,7 +35,13 @@ const EditAdmin = () => {
         <p className="page__desc">ادخل البيانات التالية لاستكمال اضافة مدير لوحة <br/> تحكم جديد</p>
         <form className="pt-8">
             <div className="img">
-                <label htmlFor="img" className="overlay__label"><img src={profile} alt="profile img"/></label>
+                <label htmlFor="img" className="overlay__label">
+                    <img 
+                        src={img !== null ? URL.createObjectURL(img) : profile}  
+                        className={img !== null ? "added" : ""}  
+                        alt="profile img"
+                    />
+                </label>
                 <input 
                     type="file" 
                     name="img" 

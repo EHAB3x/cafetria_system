@@ -23,6 +23,15 @@
     display: flex;
     flex-direction: column;
 }
+.edit__admin form .img img.added{
+    width: 138px;
+    height: 138px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
 .edit__admin form .img label.overlay__label{
     width: 138px;
     height: 138px;
