@@ -4,7 +4,8 @@ import "./login.css"
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
-import Swal from 'sweetalert2/src/sweetalert2.js'
+import SuccessToast from "../../../components/toasts/SuccessToast";
+import ErrorToast from "../../../components/toasts/ErrorToast";
 const Login = () => {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
@@ -13,21 +14,7 @@ const Login = () => {
     const submitData = (e)=>{
         e.preventDefault();
         if (email === "" || password === ""){
-            const Toast = Swal.mixin({
-                toast: true,
-                position: "top-end",
-                showConfirmButton: false,
-                timer: 3000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                  toast.onmouseenter = Swal.stopTimer;
-                  toast.onmouseleave = Swal.resumeTimer;
-                }
-            });
-            Toast.fire({
-                icon: "error",
-                title: "من فضلك قم بادخال جميع البيانات"
-            });
+            ErrorToast("من فضلك قم بادخال جميع البيانات")
         }else{
             axios.post("https://cafe.highdam-sk.com/api/admin/login",{
                 "account_type": "super_admin",
@@ -35,38 +22,9 @@ const Login = () => {
                 password
             }).then(res => {
                 window.localStorage.setItem("userInfos",JSON.stringify(res.data.data));
-                const Toast = Swal.mixin({
-                    toast: true,
-                    position: "top-end",
-                    showConfirmButton: false,
-                    timer: 3000,
-                    timerProgressBar: true,
-                    didOpen: (toast) => {
-                        toast.onmouseenter = Swal.stopTimer;
-                        toast.onmouseleave = Swal.resumeTimer;
-                        navigate("home")
-                    }
-                });
-                Toast.fire({
-                    icon: "success",
-                    title: res.data.message
-                });
+                SuccessToast("تم تسجيل الدخول بنجاح", navigate);
             }).catch(err=>{
-                const Toast = Swal.mixin({
-                    toast: true,
-                    position: "top-end",
-                    showConfirmButton: false,
-                    timer: 3000,
-                    timerProgressBar: true,
-                    didOpen: (toast) => {
-                      toast.onmouseenter = Swal.stopTimer;
-                      toast.onmouseleave = Swal.resumeTimer;
-                    }
-                });
-                Toast.fire({
-                    icon: "error",
-                    title: err.response.data.message
-                });
+                ErrorToast(err.response.data.message)
             })
         }
     }
