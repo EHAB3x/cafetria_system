@@ -8,17 +8,28 @@ import { MdChevronRight,MdChevronLeft } from "react-icons/md";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-const AdminTable = ({ headers, data }) => {
+const AdminTable = ({ headers }) => {
   const [boundaries, setBoundaries] = useState({bottom: 0, top: 7});
   const [counts, setCounts] = useState(0);
   const [active, setActive] = useState(0);
+  const [data, setData] = useState([]);
+  const [refetch, setRefetch] = useState(true);
   const navigate = useNavigate();
   useEffect(() => {
     let adminsArrayLength = data.length;
     const pageCount = Math.ceil(adminsArrayLength / 7);
     setCounts(pageCount);
   }, [data]);
-
+  useEffect(() => {
+            const token = JSON.parse(window.localStorage.getItem("userInfos")).token;
+            axios.get("https://cafe.highdam-sk.com/api/admin/users?account_type=super_admin", {
+                headers: {
+                    'Authorization': "Bearer " + token,
+                }
+            }).then(res => {
+              setData(res.data.data);
+            })
+}, [refetch]);
   const handlePageChange = (pageIndex) => {
     const bottom = pageIndex * 7;
     const top = bottom + 7;
@@ -27,12 +38,12 @@ const AdminTable = ({ headers, data }) => {
 
   const deleteAdmin= async (adminId)=>{
     const token = JSON.parse(window.localStorage.getItem("userInfos")).token;
-    const response = await axios.get(`https://cafe.highdam-sk.com/api/admin/users/${adminId}?account_type=super_admin`, {
+    const response = await axios.delete(`https://cafe.highdam-sk.com/api/admin/users/${adminId}?account_type=super_admin`, {
       headers: {
         'Authorization': "Bearer " + token,
       }
     });
-    console.log(response);
+    setRefetch(response.data.data)
   }
 
   return(
