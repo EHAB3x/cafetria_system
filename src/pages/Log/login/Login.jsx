@@ -6,9 +6,11 @@ import { useState } from "react";
 import axios from "axios";
 import SuccessToast from "../../../components/toasts/SuccessToast";
 import ErrorToast from "../../../components/toasts/ErrorToast";
+import { useAuth } from "../../../context/AuthContext";
 const Login = () => {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
+    const { login } = useAuth();
     const navigate = useNavigate();
 
     const submitData = (e)=>{
@@ -21,7 +23,7 @@ const Login = () => {
                 email,
                 password
             }).then(res => {
-                window.localStorage.setItem("userInfos",JSON.stringify(res.data.data));
+                login(res.data.data)
                 SuccessToast("تم تسجيل الدخول بنجاح", navigate);
             }).catch(err=>{
                 ErrorToast(err.response.data.message)

@@ -1,5 +1,5 @@
 import './App.css'
-import { Route, Routes, useLocation } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import Login from './pages/Log/login/Login'
 import Forget from './pages/Log/forgetPassword/Forget'
 import Home from './pages/home/Home'
@@ -8,20 +8,23 @@ import Navbar from './components/navbar/Navbar'
 import Palette from './components/palette/Palette'
 import Admins from './pages/Admins/Admins'
 import EditAdmin from './pages/Admins/editAdmin/EditAdmin'
+import { useAuth } from './context/AuthContext'
 
 function App() {
-  const location = useLocation();
-
-  // Check if the current path is not '/' or '/forget'
-  const showSidebar = location.pathname !== '/' && location.pathname !== '/forget';
+  const {isLoggedIn} = useAuth();
   return (
     <div className="app">
       <Palette />
-      <div className={showSidebar &&`right`}>
-        {showSidebar && <Sidebar /> }
-      </div>
-      <div className="left">
-        {showSidebar && <Navbar /> }
+
+      {isLoggedIn === false
+      ?<Login />
+      :
+        <>
+        <div className="right">
+          <Sidebar/>
+        </div>
+        <div className="left">
+        <Navbar />
         <Routes>
           <Route path='/' element={<Login />}/>
           <Route path='/forget' element={<Forget />}/>
@@ -29,7 +32,9 @@ function App() {
           <Route path='/admins' element={<Admins />}/>
           <Route path='/admins/:adminId' element={<EditAdmin />}/>
         </Routes>
-      </div>
+        </div>
+      </>
+      }
     </div>
   )
 }
