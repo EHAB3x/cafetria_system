@@ -34,6 +34,7 @@ const Login = () => {
                 email,
                 password
             }).then(res => {
+                console.log(JSON.stringify(res.data.data.token))
                 window.localStorage.setItem("userInfos",JSON.stringify(res.data.data));
                 const Toast = Swal.mixin({
                     toast: true,
@@ -44,7 +45,7 @@ const Login = () => {
                     didOpen: (toast) => {
                         toast.onmouseenter = Swal.stopTimer;
                         toast.onmouseleave = Swal.resumeTimer;
-                        navigate("home")
+                        navigate("/home")
                     }
                 });
                 Toast.fire({
