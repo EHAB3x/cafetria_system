@@ -7,7 +7,7 @@ import { FaFileInvoiceDollar } from "react-icons/fa6";
   export const items =[
     {
       "title": " إجمالى رصيد الخزنة",
-      "price": "2000 EGP",
+      "price": " EGP 2000",
       "icon": <FaFilm />
     },
     {
@@ -17,7 +17,7 @@ import { FaFileInvoiceDollar } from "react-icons/fa6";
     },
     {
       "title": "إجمالى قيم المصروفات",
-      "price": "2000 EGP",
+      "price": " EGP 2000",
       "icon": <FaSquarePollHorizontal />
     },
     {
