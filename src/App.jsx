@@ -6,6 +6,8 @@ import Home from './pages/home/Home'
 import Sidebar from './components/sidebar/Sidebar'
 import Navbar from './components/navbar/Navbar'
 import Palette from './components/palette/Palette'
+import Cities from './pages/Cities/Cities'
+import AddCity from './components/city/AddCity'
 
 function App() {
   const location = useLocation();
@@ -14,14 +16,18 @@ function App() {
   const showSidebar = location.pathname !== '/' && location.pathname !== '/forget';
   return (
     <div className="app">
+       
       <Palette />
       <div className={showSidebar &&`right`}>
         {showSidebar && <Sidebar /> }
       </div>
       <div className="left">
         {showSidebar && <Navbar /> }
+     
         <Routes>
-          <Route path='/' element={<Login />}/>
+          <Route path='/'  exact element={<Login />}/>
+          <Route path='/cities' element={<Cities />}/>
+          <Route path='/addCity' element={<AddCity />}/>
           <Route path='/forget' element={<Forget />}/>
           <Route path='/home' element={<Home />}/>
         </Routes>
