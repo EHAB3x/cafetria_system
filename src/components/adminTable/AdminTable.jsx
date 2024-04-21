@@ -95,7 +95,7 @@ const AdminTable = ({ headers }) => {
                         className="delete"
                         onClick={()=> {
                           setId(admin.id)
-                          setShowDelete(true)
+                          setShowDelete(!showDelete)
                         }}
                       >
                         <RiDeleteBinLine size="20"/>

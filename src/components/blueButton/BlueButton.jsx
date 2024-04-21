@@ -5,15 +5,12 @@ import { FiPlus } from "react-icons/fi";
 const BlueButton = ({text, link}) => {
     const navigate = useNavigate(); 
   return (
-    <div className="blue-btn">
+    <div className="blue-btn" onClick={()=> navigate(link)}>
       <span>
         <FiPlus />
       </span>
       
-      <button 
-        
-        onClick={()=> navigate(link)}
-      >
+      <button>
         {text}
       </button>
     </div>

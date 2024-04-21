@@ -90,13 +90,15 @@
     margin-bottom: 5px;
 }
 .edit__admin form .data .field input{
-    height: 56px;
+    height: 50px;
     border-radius: 10px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
     padding-right: 10px;
+    outline: none;
+    text-align: right;
 }
 .edit__admin form .data .field input::placeholder{
     text-align: right;

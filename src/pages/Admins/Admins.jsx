@@ -7,7 +7,7 @@ const Admins = () => {
     <div className="admins">
         <div className="head flex justify-between p-8">
             <h1 className="page__title">مديرين لوحة التحكم</h1>
-            <BlueButton text={"اضافة مسئول جديد"} link={"/cities/newCity"}/>
+            <BlueButton text={"اضافة مسئول جديد"} link={"/admins/addAdmin"}/>
         </div>
         <div className="citysearch">
             <SearchInput placeHolder={"ابحث بالأسم او المنصب"}/>

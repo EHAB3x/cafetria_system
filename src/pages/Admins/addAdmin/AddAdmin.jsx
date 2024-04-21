@@ -1,13 +1,12 @@
-import { useNavigate, useParams } from 'react-router-dom'
-import './editAdmin.css'
-import { useEffect, useState } from 'react';
+import "./addAdmin.css"
+import { useNavigate } from 'react-router-dom'
+import { useState } from 'react';
 import axios from 'axios';
 import profile from "../../../assets/img_icon.svg"
 import { useAuth } from '../../../context/AuthContext';
 import SuccessToast from '../../../components/toasts/SuccessToast';
-const EditAdmin = () => {
+const AddAdmin = () => {
     const {user} = useAuth();
-    const {adminId} = useParams();
     const [name, setName] = useState("");
     const [mobile, setMobile] = useState("");
     const [wMobile, setWMobile] = useState("");
@@ -16,26 +15,10 @@ const EditAdmin = () => {
     const [rePass, setRePassword] = useState("");
     const [img, setImg] = useState(null);
     const navigate = useNavigate();
-    useEffect(()=>{
-        const fetchAdmin = async ()=>{
-            const response = await axios.get(`https://cafe.highdam-sk.com/api/admin/users/${adminId}?account_type=super_admin`, {
-                headers: {
-                    'Authorization': "Bearer " + user.token,
-                }
-            });
-            const adminData = response.data.data;
-                setName(adminData.name || "");
-                setMobile(adminData.mobile || "");
-                setWMobile(adminData.whatsapp_mobile || "");
-                setMail(adminData.email || "");
-                setPassword("");
-        }
-        fetchAdmin();
-    },[adminId, user.token])
 
-    const editAdmin = async(e)=>{
+    const addAdmin = async(e)=>{
         e.preventDefault();
-        const response = await axios.put(`https://cafe.highdam-sk.com/api/admin/users/${adminId}?account_type=super_admin`,{
+        const response = await axios.post(`https://cafe.highdam-sk.com/api/admin/users?account_type=super_admin`,{
             name,
             email: mail,
             roles_name: "Super Admin",
@@ -49,19 +32,19 @@ const EditAdmin = () => {
             headers: {
                 'Authorization': "Bearer " + user.token,
             }
-        }).then(()=> SuccessToast("تم تعديل البيانات بنجاح", navigate, "/admins"))
+        }).then(()=> SuccessToast("تم انشاء مدير لوحة التحكم بنجاح", navigate, "/admins"))
     }
-    return (
+  return (
     <div className="edit__admin p-8">
-        <h1 className="page__title">تعديل مدير لوحة التحكم {`#${adminId}`}</h1>
-        <p className="page__desc">ادخل البيانات التالية لاستكمال تعديل مدير لوحة <br/> تحكم جديد</p>
-        <form className="pt-8" onSubmit={(e)=> editAdmin(e)}>
+        <h1 className="page__title">اضافة مدير لوحة التحكم</h1>
+        <p className="page__desc">ادخل البيانات التالية لاستكمال اضافة مدير لوحة <br/> تحكم جديد</p>
+        <form className="pt-8" onSubmit={(e)=> addAdmin(e)}>
             <div className="img">
                 <label htmlFor="img" className="overlay__label">
                     <img 
                         src={img !== null ? URL.createObjectURL(img) : profile}  
                         className={img !== null ? "added" : ""}  
-                        alt="profile img"
+                        alt="profile-img"
                     />
                 </label>
                 <input 
@@ -151,4 +134,4 @@ const EditAdmin = () => {
   )
 }
 
-export default EditAdmin
+export default AddAdmin

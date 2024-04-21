@@ -1,6 +1,6 @@
 import Swal from 'sweetalert2/src/sweetalert2.js';
 
-const SuccessToast = (message, navigate) => {
+const SuccessToast = (message, navigate , path) => {
     const Toast = Swal.mixin({
         toast: true,
         position: "top-end",
@@ -10,7 +10,7 @@ const SuccessToast = (message, navigate) => {
         didOpen: (toast) => {
             toast.onmouseenter = Swal.stopTimer;
             toast.onmouseleave = Swal.resumeTimer;
-            navigate("home");
+            navigate(path);
         }
     });
     Toast.fire({

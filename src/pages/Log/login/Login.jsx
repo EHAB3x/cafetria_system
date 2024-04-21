@@ -24,7 +24,7 @@ const Login = () => {
                 password
             }).then(res => {
                 login(res.data.data)
-                SuccessToast("تم تسجيل الدخول بنجاح", navigate);
+                SuccessToast("تم تسجيل الدخول بنجاح", navigate, "home");
             }).catch(err=>{
                 ErrorToast(err.response.data.message)
             })

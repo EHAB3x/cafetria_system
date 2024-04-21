@@ -9,6 +9,7 @@ import Palette from './components/palette/Palette'
 import Admins from './pages/Admins/Admins'
 import EditAdmin from './pages/Admins/editAdmin/EditAdmin'
 import { useAuth } from './context/AuthContext'
+import AddAdmin from './pages/Admins/addAdmin/AddAdmin'
 
 function App() {
   const {isLoggedIn} = useAuth();
@@ -30,6 +31,7 @@ function App() {
           <Route path='/forget' element={<Forget />}/>
           <Route path='/home' element={<Home />}/>
           <Route path='/admins' element={<Admins />}/>
+          <Route path='/admins/addAdmin' element={<AddAdmin />}/>
           <Route path='/admins/:adminId' element={<EditAdmin />}/>
         </Routes>
         </div>
