@@ -1,0 +1,143 @@
+.edit__admin{
+    max-height: calc(100vh - 70px);
+    overflow-y: scroll;
+}
+.edit__admin::-webkit-scrollbar {
+    width: 10px;
+}
+.edit__admin::-webkit-scrollbar-track {
+    background-color: white;
+}
+.edit__admin::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+}
+.edit__admin p{
+    color: #626E7D;
+    font-size: 20px;
+}
+.edit__admin form{
+    display: flex;
+    gap: 60px;
+}
+.edit__admin form .img{
+    display: flex;
+    flex-direction: column;
+}
+.edit__admin form .img img.added{
+    width: 138px;
+    height: 138px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+.edit__admin form .img label.overlay__label{
+    width: 138px;
+    height: 138px;
+    background-color: #EAEBF4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    cursor: pointer;
+}
+.edit__admin form .img input{
+    display: none;
+}
+.edit__admin form .img label.btn__label{
+    width: 138px;
+    height: 40px;
+    font-weight: bold;
+    border:1px solid var(--primary-color);
+    color: var(--primary-color);
+    text-align: center;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    line-height: 40px;
+    margin-top: 20px;
+    transition: .3s linear;
+    -webkit-transition: .3s linear;
+    -moz-transition: .3s linear;
+    -ms-transition: .3s linear;
+    -o-transition: .3s linear;
+}
+.edit__admin form .img label.btn__label:hover{
+    color: white;
+    background-color: var(--primary-color);
+    cursor: pointer;
+}
+.edit__admin form .data{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+.edit__admin form .data .field{
+    display: flex;
+    flex-direction: column;
+}
+.edit__admin form .data .field label{
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.edit__admin form .data .field input{
+    height: 56px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    padding-right: 10px;
+}
+.edit__admin form .data .field input::placeholder{
+    text-align: right;
+    font-size: 19px;
+}
+.edit__admin form .data .btns{
+    display: flex;
+    gap: 20px;
+}
+.edit__admin form .data .btns input,
+.edit__admin form .data .btns button{
+    width: 138px;
+    height: 40px;
+    font-weight: bold;
+    border:1px solid var(--primary-color);
+    color: var(--primary-color);
+    text-align: center;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    line-height: 40px;
+    margin-top: 20px;
+    transition: .3s linear;
+    -webkit-transition: .3s linear;
+    -moz-transition: .3s linear;
+    -ms-transition: .3s linear;
+    -o-transition: .3s linear;
+}
+.edit__admin form .data .btns input{
+    background-color: var(--primary-color);
+    color: white;
+}
+.edit__admin form .data .btns input:hover{
+    background-color:white ;
+    color: var(--primary-color);
+    cursor: pointer;
+}
+.edit__admin form .data .btns button:hover{
+    background-color: var(--primary-color);
+    color: white;
+    cursor: pointer;
+}
