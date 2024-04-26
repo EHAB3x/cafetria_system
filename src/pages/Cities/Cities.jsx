@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import CustomButton from "../../components/button/CustomButton";
 import { FiPlus } from 'react-icons/fi';
+import CustomTable from "../../components/CustomTable/CustomTable";
 
 const Cities = () => {
     const dispatch = useDispatch();
@@ -28,7 +29,7 @@ const Cities = () => {
     const filteredCities = getCitiesData.filter(city =>
         city.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
-
+    const headers = ["الرقم", "الكود", "المدينة", "المحافظة", "التحكم"];
     return (
         <div className="px-10 my-8 w-full">
             <div className="header flex items-center justify-between my-7">
@@ -48,38 +49,26 @@ const Cities = () => {
                     className="w-full p-3 rounded-md border border-gray-300 focus:border-blue-500  mb-4"
                 />
             </div>
-            <table className="table-auto w-full rounded-4xl text-2xl border border-gray-300 ">
-                <thead>
-                    <tr className="bg-blue-50">
-                        <th className="px-4 py-2 text-center">الرقم</th>
-                        <th className="px-4 py-2 text-center">الكود</th>
-                        <th className="px-4 py-2 text-center">المدينة</th>
-                        <th className="px-4 py-2 text-center">المحافظة</th>
-                        <th className="px-4 py-2 text-center">التحكم</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {filteredCities.map(city => (
-                        <tr key={city.id} className="bg-white text-center divide-y divide-gray-200">
-                            <td className="px-4 py-2 ">{city.id}</td>
-                            <td className="px-4 py-2">code436</td>
-                            <td className="px-4 py-2">{city.name}</td>
-                            <td className="px-4 py-2">المحافظة</td>
-                            <td className="px-4 flex gap-5 justify-center items-center py-2">
-                                <button>
-                                    <GrView style={{ color: '#4281c5' }} />
-                                </button>
-                                <button onClick={() => handleEdit(city.id)} >
-                                    <FiEdit2 style={{ color: '#3d9635' }} />
-                                </button>
-                                <button onClick={() => handleDelete(city.id)}>
-                                    <GoTrash style={{ color: '#d6534a' }} />
-                                </button>
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+            <CustomTable
+        headers={headers}
+        data={filteredCities.map(city => [
+          city.id,
+          city.code,
+          city.name,
+          city.province,
+          <td key={city.id} className="px-4 flex gap-5 justify-center items-center py-2">
+            <button>
+              <GrView style={{ color: '#4281c5' }} />
+            </button>
+            <button onClick={() => handleEdit(city.id)}>
+              <FiEdit2 style={{ color: '#3d9635' }} />
+            </button>
+            <button onClick={() => handleDelete(city.id)}>
+              <GoTrash style={{ color: '#d6534a' }} />
+            </button>
+          </td>
+        ])}
+      />
         </div>
     )
 }
