@@ -6,7 +6,7 @@ import { FiEdit2 } from "react-icons/fi";
 import CustomTable from "../../components/CustomTable/CustomTable";
 import { GrView } from "react-icons/gr";
 
-const RoleList = ({ roles, loading, error, fetchRoles, updateRole, deleteRole, createRole }) => {
+const RoleList = ({ roles, loading, error, fetchRoles, updateRole, deleteRole }) => {
   useEffect(() => {
     fetchRoles();
   }, [fetchRoles]);
@@ -49,19 +49,8 @@ const RoleList = ({ roles, loading, error, fetchRoles, updateRole, deleteRole, c
     }
   };
 
-  const handleCreateRole = async () => {
-    if (newRoleName.trim() !== '') {
-      try {
-        await createRole({ name: newRoleName });
-        setNewRoleName(''); // Clear the input field after creating the role
-      } catch (error) {
-        console.error('Error creating role:', error);
-        // Handle error
-      }
-    }
-  };
 
-  const filteredRoles = roles.filter(role =>
+   const filteredRoles = roles.filter(role =>
     role.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
@@ -110,14 +99,14 @@ const RoleList = ({ roles, loading, error, fetchRoles, updateRole, deleteRole, c
               type="text"
               value={newRoleName}
               onChange={(e) => setNewRoleName(e.target.value)}
-              className="w-full p-2 mb-2 border border-gray-300 rounded-md"
+              className="w-full p-4 mb-2 border border-gray-300 rounded-md"
             />
             <div className="flex justify-between">
               <button onClick={handleUpdateRole} className="px-4 py-2 bg-blue-500 text-white rounded-md mr-2">
-                Submit
+               حفظ
               </button>
               <button onClick={closeEditPopup} className="px-4 py-2 bg-gray-500 text-white rounded-md">
-                Cancel
+                إلغاء
               </button>
             </div>
           </div>

@@ -10,7 +10,9 @@ import Cities from './pages/Cities/Cities'
 import AddCity from './components/city/AddCity'
 import Rule from './pages/Roles/rule'
 import AddRole from './pages/Roles/AddRole'
-
+import Admins from './pages/Admins/Admins'
+import EditAdmin from './pages/Admins/editAdmin/EditAdmin'
+import AddAdmin from './pages/Admins/addAdmin/AddAdmin'
 function App() {
   const location = useLocation();
 
@@ -32,7 +34,9 @@ function App() {
           <Route path='/roles' element={<Rule />}/>
           <Route path='/addCity' element={<AddCity />}/>
           <Route path='/addRole' element={<AddRole />}/>
-          
+          <Route path='/admins' element={<Admins />}/>
+          <Route path='/admins/addAdmin' element={<AddAdmin />}/>
+          <Route path='/admins/:adminId' element={<EditAdmin />}/>
           <Route path='/forget' element={<Forget />}/>
           <Route path='/home' element={<Home />}/>
         </Routes>
