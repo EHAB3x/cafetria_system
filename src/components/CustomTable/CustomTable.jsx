@@ -12,9 +12,9 @@ const CustomTable = ({ data, headers }) => {
       </thead>
       <tbody>
         {data.map((rowData, rowIndex) => (
-          <tr key={rowIndex} className="bg-white text-center divide-y divide-gray-200">
+          <tr key={rowIndex} className="bg-white  text-center divide-y divide-gray-200">
             {rowData.map((cellData, cellIndex) => (
-              <td key={cellIndex} className="px-4 py-2">{cellData}</td>
+              <td key={cellIndex} className="px-4  py-2">{cellData}</td>
             ))}
           </tr>
         ))}

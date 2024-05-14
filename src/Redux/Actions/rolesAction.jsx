@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FETCH_ROLES_REQUEST, FETCH_ROLES_SUCCESS, FETCH_ROLES_FAILURE, UPDATE_ROLE, DELETE_ROLE } from '../ActionTypes';
+import { FETCH_ROLES_REQUEST, FETCH_ROLES_SUCCESS, FETCH_ROLES_FAILURE, UPDATE_ROLE, DELETE_ROLE } from '../Types/ActionTypes';
 
 export const fetchRolesRequest = () => ({
   type: FETCH_ROLES_REQUEST,

@@ -13,6 +13,11 @@ import AddRole from './pages/Roles/AddRole'
 import Admins from './pages/Admins/Admins'
 import EditAdmin from './pages/Admins/editAdmin/EditAdmin'
 import AddAdmin from './pages/Admins/addAdmin/AddAdmin'
+import Standard from './pages/Standard/Standard'
+import Empolyee from './pages/Empolyee/Empolyee'
+import AddEmpolyee from './pages/Empolyee/AddEmpolyee'
+import AddUnit from './pages/Standard/AddUnit'
+
 function App() {
   const location = useLocation();
 
@@ -31,6 +36,10 @@ function App() {
         <Routes>
           <Route path='/'  exact element={<Login />}/>
           <Route path='/cities' element={<Cities />}/>
+          <Route path='/Standard' element={<Standard />}/>
+          <Route path='/addUnit' element={<AddUnit />}/>
+          <Route path='/Empolyee' element={<Empolyee />}/>
+          <Route path='/addEmpolyee' element={<AddEmpolyee />}/>
           <Route path='/roles' element={<Rule />}/>
           <Route path='/addCity' element={<AddCity />}/>
           <Route path='/addRole' element={<AddRole />}/>

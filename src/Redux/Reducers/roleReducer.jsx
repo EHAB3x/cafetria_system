@@ -1,5 +1,5 @@
 // rolesReducer.js
-import { FETCH_ROLES_REQUEST, FETCH_ROLES_SUCCESS, FETCH_ROLES_FAILURE, UPDATE_ROLE, DELETE_ROLE } from '../ActionTypes';
+import { FETCH_ROLES_REQUEST, FETCH_ROLES_SUCCESS, FETCH_ROLES_FAILURE, UPDATE_ROLE, DELETE_ROLE } from '../Types/ActionTypes';
 
 const initialState = {
   roles: [],
