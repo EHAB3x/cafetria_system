@@ -2,18 +2,19 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   fetchStandardUnits,
-  createStandardUnit,
   updateStandardUnit,
   deleteStandardUnit
 } from '../../Redux/Actions/standardActions';
 import { RiDeleteBin6Line, RiPencilLine } from 'react-icons/ri';
 import CustomTable from '../../components/CustomTable/CustomTable';
+import CustomButton from '../../components/button/CustomButton';
+import { Link } from 'react-router-dom';
 
 const Standard = () => {
   const dispatch = useDispatch();
-  const [name, setName] = useState('');
   const [updateId, setUpdateId] = useState(null);
   const [updateName, setUpdateName] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     dispatch(fetchStandardUnits());
@@ -23,10 +24,9 @@ const Standard = () => {
   const loading = useSelector(state => state.standardReducer.loading);
   const error = useSelector(state => state.standardReducer.error);
 
-  const handleCreate = () => {
-    dispatch(createStandardUnit({ name }));
-    setName('');
-  };
+  const filteredData = standardUnits.filter(unit =>
+    unit.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   const handleUpdate = () => {
     dispatch(updateStandardUnit(updateId, { name: updateName }));
@@ -49,7 +49,7 @@ const Standard = () => {
   };
 
   const headers = ["Number", "Code", "Unit", "Action"];
-  const data = standardUnits.map((unit, index) => ([
+  const data = filteredData.map((unit, index) => ([
     index + 1,
     '#4587',
     updateId === unit.id ? (
@@ -85,11 +85,25 @@ const Standard = () => {
   
   return (
     <div className=" mx-auto p-4">
-      <h2 className="text-5xl font-bold my-4">وحدات القياس</h2>
-      {loading && <div>Loading...</div>}
-      {error && <div className="text-red-500">Error: {error}</div>}
+     <div className="flex justify-between my-5 items-center">
+       <h2 className="text-5xl font-bold my-4">وحدات القياس</h2>
+       <Link to={'/addUnit'}>
+         <CustomButton text={'إضافة وحدة جديدة'}/>
+       </Link>
+     </div>
+     <div className="w-full my-5">
+       <input
+         className="border w-full border-gray-400 p-2"
+         type="text"
+         placeholder="ابحث بالوحدة"
+         value={searchTerm}
+         onChange={(e) => setSearchTerm(e.target.value)}
+       />
+     </div>
+     {loading && <div>Loading...</div>}
+     {error && <div className="text-red-500">Error: {error}</div>}
      
-      <CustomTable data={data} headers={headers} />
+     <CustomTable data={data} headers={headers} />
     </div>
   );
 };
